@@ -1,4 +1,4 @@
-A set of case class that allow you to build a Thrift abstract model programmatically and then serialize it into valid Thrift code. It takes care of some messy details such as arranging Struct declarations in the correct dependency order ( you cannot reference a Struct before it has been declared ), avoiding typical formatting errors ( spaces after indexes, etc ) and will detect a few invalid scenarios ( cyclic Struct references for example ).
+A set of case classes that allow you to build a Thrift abstract model programmatically and then serialize it into valid Thrift code. It takes care of some messy details such as arranging Struct declarations in the correct dependency order ( you cannot reference a Struct before it has been declared ), avoiding typical formatting errors ( spaces after indexes, etc ) and will detect a few invalid scenarios ( cyclic Struct references for example ).
 
 It is still missing many features ( default values, literals ) and is not extremely well tested, but for most ( simple ) scenarios it works just fine. It is part of several production systems.
 
