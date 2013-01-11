@@ -1,5 +1,14 @@
+A set of case class that allow you to build a Thrift abstract model programmatically and then serialize it into valid Thrift code. It takes care of some messy details such as arranging Struct declarations in the correct dependency order ( you cannot reference a Struct before it has been declared ), avoiding typical formatting errors ( spaces after indexes, etc ) and will detect a few invalid scenarios ( cyclic Struct references for example ).
+
+It is still missing many features ( default values, literals ) and is not extremely well tested, but for most ( simple ) scenarios it works just fine. It is part of several production systems.
+
+For example, if you wanted to generate the following thrift file:
 
 http://svn.apache.org/repos/asf/thrift/trunk/tutorial/tutorial.thrift
+
+You would create a bunch of case class instances and then call the api.write() method:
+
+    import com.southup.thriftmodel._
 
     // typedef i32 MyInteger
     val typedef1 = TypeDef(
@@ -178,3 +187,11 @@ http://svn.apache.org/repos/asf/thrift/trunk/tutorial/tutorial.thrift
       structs = List(struct1, recursiveStruct),
       exceptions = List(excp1)
     )
+
+    // and now serialize it to valid Thrift code:
+
+    api.write( None )
+
+    // or you can add a prefix to every Struct and Enum
+
+    api.write( Some("XX") )
