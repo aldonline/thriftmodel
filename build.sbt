@@ -1,10 +1,10 @@
 name := "thriftmodel"
 
-version := "1.0"
+version := "2.0.0"
 
 organization := "com.southup"
 
-scalaVersion := "2.9.2"
+scalaVersion := "2.10.1"
 
 resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
 
