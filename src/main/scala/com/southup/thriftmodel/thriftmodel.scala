@@ -169,14 +169,11 @@ private object IdentifierReplacer {
   private def getRegex( x: String ) = regexCache.getOrElseUpdate( x, ( "([^0-9a-zA-Z]+)(" + x + ")([^0-9a-zA-Z]+)" ).r )
 
   private def replaceOne( id1: String, id2: String, source: String ): Option[( String, String )] =
-    getRegex( id1 ).findFirstMatchIn( source ) match {
-      case None => None
-      case Some( mtch ) => {
-        val head = source.substring( 0, mtch.start )
+    getRegex( id1 ).findFirstMatchIn( source ) map { mtch =>
+        val head   = source.substring( 0, mtch.start )
         val middle = mtch.matched.replace( id1, id2 )
-        val rest = source.substring( mtch.end, source.length )
-        Some( ( head + middle, rest ) )
-      }
+        val rest   = source.substring( mtch.end, source.length )
+        ( head + middle, rest )
     }
 
   private def replaceAll( id1: String, id2: String, source: String ) = {
