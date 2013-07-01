@@ -8,6 +8,8 @@ http://svn.apache.org/repos/asf/thrift/trunk/tutorial/tutorial.thrift
 
 You would create a bunch of case class instances and then call the api.write() method:
 
+```scala
+
     import com.southup.thriftmodel._
 
     // typedef i32 MyInteger
@@ -195,3 +197,4 @@ You would create a bunch of case class instances and then call the api.write() m
     // or you can add a prefix to every Struct and Enum
 
     api.write( Some("XX") )
+```
